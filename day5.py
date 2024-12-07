@@ -52,6 +52,7 @@ def check_and_change_order(pages, follow_rules):
         page = pages[idx]
         following_pages = follow_rules[page]
         prev_pages = pages[0:idx]
+        # move all pages before that need to be after after, preserving order
         to_move = [page for page in prev_pages if page in following_pages]
         prev_pages = [page for page in prev_pages if page not in to_move]
         pages = prev_pages + [pages[idx]] + to_move + pages[idx + 1 :]
